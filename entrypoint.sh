@@ -5,7 +5,7 @@
 # DOCKER_PASSWORD="your_password"
 
 # Log in to Docker Hub or your Docker registry (if necessary)
-docker login -u rishabhbohra3 -p 9443277454
+docker login -u rishabhbohra3 -p ****
 
 # Docker image name and optional tag
 IMAGE_NAME="your-docker-image-name"
