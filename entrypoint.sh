@@ -1,15 +1,21 @@
 #!/bin/bash
 
 # Your Docker login credentials
-# DOCKER_USERNAME="your_username"
-# DOCKER_PASSWORD="your_password"
+# DOCKER_USERNAME=$INPUT_USERNAME
+# DOCKER_PASSWORD=$INPUT_PASSWORD
+echo $INPUT_USERNAME
+
 
 # Log in to Docker Hub or your Docker registry (if necessary)
-docker login -u rishabhbohra3 -p asdasdaa
+if [ ! -z $INPUT_USERNAME ];
+then echo $INPUT_PASSWORD | docker login -u $INPUT_USERNAME --password-stdin
+fi
+
 
 # Docker image name and optional tag
-IMAGE_NAME="your-docker-image-name"
-IMAGE_TAG="latest"  # You can change this to the desired image tag
+echo $INPUT_PR
+echo $INPUT_COMMAND
+echo $INPUT_OPTIONS
 
 # Run the Docker container from the specified image
 
@@ -24,4 +30,4 @@ IMAGE_TAG="latest"  # You can change this to the desired image tag
 # docker logout
 
 
-exec docker run rishabhbohra3/git-actions:codereview_v1 --mode=cli  --pr_url https://gitlab.com/bitoco/ide-plugins/-/merge_requests/960 review --static_analysis.fb_infer.build_tool=gradle --static_analysis.fb_infer.language=java --bee.path=/automation-platform  --bee.actn_dir=/automation-platform/default_bito_ad/bito_modules --git.access_token=glpat-gzmZQVsH5HLpBEssvP9y --bito_cli.bito.access_key=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoidjFfMTIzMV83ODEzMjFfNTQ4OTE2X1RodSBTZXAgMjEgMTI6MDY6MzEgVVRDIDIwMjMifQ.kx2Y-S78PjhLzBC_UAEE9sVliRWy_y6Sf78FNjjMivw --static_analysis.fb_infer.language=NODE --static_analysis.fb_infer.enabled=False --code_feedback=False --dependency_check.enabled=True --dependency_check.snyk_auth_token=6f597190-da44-4c88-b971-662fcea51fc1
+exec docker run rishabhbohra3/git-actions:codereview_v1 --mode=cli --pr_url $INPUT_PR $INPUT_COMMAND $INPUT_OPTIONS
