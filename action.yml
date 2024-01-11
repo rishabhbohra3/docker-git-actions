@@ -7,10 +7,10 @@ inputs:
     required: true
   pr:
     description: 'pr url'
-    required: false
+    required: true
   commnad:
     description: 'Use a specific command'
-    required: false
+    required: true
     default: review
   username:
     description: 'Username'
