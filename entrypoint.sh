@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo $INPUT_GITHUB
 # Your Docker login credentials
 # DOCKER_USERNAME=$INPUT_USERNAME
 # DOCKER_PASSWORD=$INPUT_PASSWORD
