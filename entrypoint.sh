@@ -20,6 +20,7 @@ echo $INPUT_OPTIONS
 
 SUPPORTED_COMMANDS=("/review")
 
+INPUT_COMMAND=$(echo "$INPUT_COMMAND" | tr -d '[:space:]')
 for command in "${SUPPORTED_COMMANDS[@]}"; do
   if [ "$command" = "$INPUT_COMMAND" ]; then
     valid_command=true
