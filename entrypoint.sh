@@ -18,6 +18,16 @@ echo $INPUT_PR
 echo $INPUT_COMMAND
 echo $INPUT_OPTIONS
 
+SUPPORTED_COMMANDS=("/review")
+
+for command in "${SUPPORTED_COMMANDS[@]}"; do
+  if [ "$command" = "$INPUT_COMMAND" ]; then
+    valid_command=true
+    break
+  fi
+done
+
+
 # Run the Docker container from the specified image
 
 # Optionally, you can provide additional arguments or options to the 'docker run' command
@@ -30,5 +40,10 @@ echo $INPUT_OPTIONS
 # Finally, you can log out of Docker (if desired)
 # docker logout
 
+if [ "$valid_command" = true ]; then
+  exec docker run rishabhbohra3/git-actions:codereview_v1 --mode=cli --pr_url $INPUT_PR $INPUT_COMMAND $INPUT_OPTIONS
+else
+  echo "$INPUT_COMMAND is not supported"
+  exit 1  # Exit the script with a non-zero status code
+fi
 
-exec docker run rishabhbohra3/git-actions:codereview_v1 --mode=cli --pr_url $INPUT_PR $INPUT_COMMAND $INPUT_OPTIONS
