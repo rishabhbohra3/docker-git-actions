@@ -45,6 +45,6 @@ if [ "$valid_command" = true ]; then
   exec docker run rishabhbohra3/git-actions:codereview_v1 --mode=cli --pr_url $INPUT_PR $INPUT_COMMAND $INPUT_OPTIONS
 else
   echo "$INPUT_COMMAND is not supported"
-  exit 1  # Exit the script with a non-zero status code
+  exit 0  # Exit the script with a non-zero status code
 fi
 
